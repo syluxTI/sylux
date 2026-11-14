@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SYLUX — Cinco direções</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&family=Chakra+Petch:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#070708;
+  --paper:#F0EEE6;
+  --p2:rgba(240,238,230,.6);
+  --p3:rgba(240,238,230,.3);
+  --line:rgba(240,238,230,.13);
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--ink);color:var(--paper);font-family:'Inter',-apple-system,sans-serif;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100svh}
+::selection{background:var(--paper);color:var(--ink)}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+canvas{display:block}
+img{display:block;max-width:100%}
+
+#net{position:fixed;inset:0;z-index:0;opacity:.55}
+.vg{position:fixed;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(120% 80% at 50% 10%,transparent 30%,rgba(0,0,0,.75) 100%)}
+.gr{position:fixed;inset:-150%;z-index:2;pointer-events:none;opacity:.2;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation:g 1.1s steps(3) infinite}
+@keyframes g{0%{transform:translate(0,0)}33%{transform:translate(-2%,1%)}66%{transform:translate(1%,-2%)}100%{transform:translate(0,0)}}
+
+.cur{position:fixed;top:0;left:0;z-index:900;pointer-events:none;width:40px;height:40px;margin:-20px 0 0 -20px;
+  border-radius:50%;border:1px solid var(--p3);mix-blend-mode:difference;
+  transition:width .5s var(--ease),height .5s var(--ease),margin .5s var(--ease),background .4s}
+.cur.on{width:88px;height:88px;margin:-44px 0 0 -44px;background:rgba(240,238,230,.1);border-color:transparent}
+@media(hover:none){.cur{display:none}}
+
+main{position:relative;z-index:5;padding:clamp(26px,5vw,56px) clamp(20px,5vw,60px) clamp(60px,8vw,90px);
+  min-height:100svh;display:flex;flex-direction:column}
+
+.head{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;flex-wrap:wrap}
+.head img{height:clamp(22px,3vw,30px);opacity:0}
+.head-meta{font-family:'Chakra Petch',sans-serif;font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;
+  color:var(--p3);text-align:right;line-height:1.9}
+
+.hero{margin-top:clamp(50px,9vw,110px)}
+.hero h1{font-size:clamp(40px,8.4vw,128px);font-weight:200;letter-spacing:-.055em;line-height:.92}
+.hero h1 b{font-weight:600}
+.ln{display:block;overflow:hidden}
+.ln i{display:block;font-style:normal;transform:translateY(106%)}
+.hero p{margin-top:26px;max-width:52ch;font-size:15.5px;line-height:1.68;color:var(--p2);opacity:0}
+
+.list{margin-top:clamp(50px,8vw,90px);border-top:1px solid var(--line)}
+.row{display:grid;grid-template-columns:52px 1.1fr 1.6fr 150px;gap:clamp(12px,2vw,28px);align-items:center;
+  padding:clamp(20px,2.6vw,30px) 0;border-bottom:1px solid var(--line);position:relative;overflow:hidden;opacity:0}
+@media(max-width:860px){.row{grid-template-columns:40px 1fr;gap:12px}.row .desc,.row .tagwrap{display:none}}
+.row .fill{position:absolute;inset:0;background:var(--paper);transform:scaleY(0);transform-origin:bottom;
+  transition:transform .6s var(--ease);z-index:0}
+.row:hover .fill{transform:scaleY(1)}
+.row>*{position:relative;z-index:1;transition:color .45s}
+.row .nn{font-family:'Chakra Petch',sans-serif;font-size:12px;color:var(--p3)}
+.row .tt{font-size:clamp(26px,4.2vw,56px);font-weight:200;letter-spacing:-.045em;line-height:1;
+  transition:transform .65s var(--ease),color .45s}
+.row .desc{font-size:13.5px;color:var(--p2);line-height:1.6;max-width:46ch}
+.row .tagwrap{display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-end}
+.row .tg{font-family:'Chakra Petch',sans-serif;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;
+  padding:4px 9px;border-radius:999px;border:1px solid var(--line);color:var(--p3);transition:border-color .45s,color .45s}
+.row:hover .tt{transform:translateX(16px);color:var(--ink)}
+.row:hover .nn,.row:hover .desc{color:rgba(7,7,8,.6)}
+.row:hover .tg{border-color:rgba(7,7,8,.28);color:rgba(7,7,8,.6)}
+.row .arrow{position:absolute;right:0;top:50%;transform:translate(26px,-50%);opacity:0;z-index:1;
+  transition:transform .6s var(--ease),opacity .4s}
+.row:hover .arrow{transform:translate(0,-50%);opacity:1}
+.row .arrow svg{width:26px;height:26px;stroke:var(--ink);fill:none;stroke-width:1.2}
+
+.preview{position:fixed;z-index:20;width:300px;height:200px;border-radius:16px;overflow:hidden;pointer-events:none;
+  opacity:0;transform:translate(-50%,-50%) scale(.9);border:1px solid var(--line);
+  box-shadow:0 40px 90px rgba(0,0,0,.6)}
+.preview div{position:absolute;inset:0;opacity:0;transition:opacity .45s}
+.preview div.on{opacity:1}
+@media(max-width:1100px){.preview{display:none}}
+
+.foot{margin-top:auto;padding-top:clamp(40px,6vw,70px);display:flex;flex-wrap:wrap;gap:18px;
+  justify-content:space-between;font-size:11.5px;color:var(--p3);letter-spacing:.05em;opacity:0}
+.foot a{color:var(--p2);transition:color .3s}
+.foot a:hover{color:var(--paper)}
+
+.pt{position:fixed;inset:0;z-index:950;pointer-events:none;display:flex}
+.pt i{flex:1;background:var(--paper);transform:scaleY(0);transform-origin:bottom}
+.pt-t{position:fixed;inset:0;z-index:951;display:grid;place-items:center;pointer-events:none;opacity:0;
+  font-family:'Chakra Petch',sans-serif;font-size:clamp(24px,5vw,54px);letter-spacing:.3em;color:var(--ink)}
+</style>
+</head>
+<body>
+
+<canvas id="net"></canvas>
+<div class="vg"></div>
+<div class="gr"></div>
+<div class="cur" id="cur"></div>
+
+<div class="preview" id="preview">
+  <div data-p="0" style="background:radial-gradient(circle at 50% 50%,#2a2a30,#070708 70%)"></div>
+  <div data-p="1" style="background:linear-gradient(170deg,#F0EEE6,#cfccc2)"></div>
+  <div data-p="2" style="background:conic-gradient(from 210deg at 40% 60%,#0a0a0c,#51515a,#F0EEE6,#1a1a1e,#0a0a0c)"></div>
+  <div data-p="3" style="background:#F0EEE6;background-image:linear-gradient(rgba(13,13,12,.14) 1px,transparent 1px),linear-gradient(90deg,rgba(13,13,12,.14) 1px,transparent 1px);background-size:22px 22px"></div>
+  <div data-p="4" style="background:radial-gradient(circle at 60% 35%,#d7d4cb,#15151a 55%,#070708)"></div>
+</div>
+
+<main>
+  <div class="head">
+    <img src="m.png" alt="SYLUX" id="mark">
+    <div class="head-meta">Orchestration as a Service<br>Cinco direções visuais · 2026</div>
+  </div>
+
+  <section class="hero">
+    <h1>
+      <span class="ln"><i>Uma marca.</i></span>
+      <span class="ln"><i><b>Cinco universos.</b></i></span>
+    </h1>
+    <p id="heroP">O mesmo produto — uma camada de orquestração para IA — interpretado em cinco linguagens visuais independentes. Cada página carrega seu próprio motor de animação, sua própria física e seu próprio ritmo.</p>
+  </section>
+
+  <nav class="list" id="list"></nav>
+
+  <div class="foot">
+    <span>© 2026 SYLUX Technologies</span>
+    <span>GSAP · Three.js · anime.js · WebGL · Web Audio</span>
+    <span>Use ↑ ↓ e ⏎ para navegar</span>
+  </div>
+</main>
+
+<div class="pt" id="pt"><i></i><i></i><i></i><i></i><i></i></div>
+<div class="pt-t" id="ptT">SYLUX</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+<script>
+const $=(s,c=document)=>c.querySelector(s),$$=(s,c=document)=>[...c.querySelectorAll(s)];
+const lerp=(a,b,t)=>a+(b-a)*t;
+
+const PAGES=[
+ {n:'01',t:'Orbit',f:'lp-01-orbit.html',d:'Escuridão absoluta e um orbe de 17 mil partículas que colapsa em galáxia conforme você desce. Scroll horizontal fixado, cartões em vidro líquido, cursor magnético.',g:['WebGL','Partículas','Scroll horizontal','Liquid glass']},
+ {n:'02',t:'Paper',f:'lp-02-paper.html',d:'Luz, papel e um objeto de metal girando sob controle do scroll — e do seu arrasto. Editorial, silencioso, com dobras de página e filme embutido.',g:['3D arrastável','Editorial','Parallax','Iframe']},
+ {n:'03',t:'Flux',f:'lp-03-flux.html',d:'Um shader de ruído deformado ocupa a tela inteira e reage ao mouse. Seis cenas na horizontal com snap, menu radial e inversão de tema ao vivo.',g:['Shader GLSL','Menu radial','Tema dinâmico','Snap']},
+ {n:'04',t:'Grid',f:'lp-04-grid.html',d:'O console de operação: terminal que digita sozinho, topologia 3D que você gira e inspeciona, painel ao vivo e uma command palette em ⌘K.',g:['Topologia 3D','Terminal','⌘K','Dados ao vivo']},
+ {n:'05',t:'Echo',f:'lp-05-echo.html',d:'Cinema: um sólido de vidro refrativo flutua enquanto os slides passam com snap vertical. Tem até um drone sonoro gerado em tempo real.',g:['Refração','Slides','Web Audio','Carrossel']}
+];
+$('#list').innerHTML=PAGES.map((p,i)=>`
+ <a class="row" href="${p.f}" data-i="${i}">
+   <i class="fill"></i>
+   <span class="nn">${p.n}</span>
+   <span class="tt">${p.t}</span>
+   <span class="desc">${p.d}</span>
+   <span class="tagwrap">${p.g.map(g=>`<span class="tg">${g}</span>`).join('')}</span>
+   <span class="arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+ </a>`).join('');
+
+/* cursor */
+const cur=$('#cur');let mx=innerWidth/2,my=innerHeight/2,cx=mx,cy=my;
+addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
+(function l(){cx=lerp(cx,mx,.15);cy=lerp(cy,my,.15);cur.style.transform=`translate(${cx}px,${cy}px)`;requestAnimationFrame(l)})();
+$$('a,button').forEach(el=>{
+  el.addEventListener('mouseenter',()=>cur.classList.add('on'));
+  el.addEventListener('mouseleave',()=>cur.classList.remove('on'));
+});
+
+/* rede de partículas */
+const cv=$('#net'),ctx=cv.getContext('2d');
+let W,H,pts=[];
+function resize(){
+  W=cv.width=innerWidth*Math.min(devicePixelRatio,2);
+  H=cv.height=innerHeight*Math.min(devicePixelRatio,2);
+  cv.style.width=innerWidth+'px';cv.style.height=innerHeight+'px';
+  const n=Math.min(110,Math.floor(innerWidth/14));
+  pts=[];
+  for(let i=0;i<n;i++)pts.push({
+    x:Math.random()*W,y:Math.random()*H,
+    vx:(Math.random()-.5)*.22,vy:(Math.random()-.5)*.22,
+    r:Math.random()*1.5+.5
+  });
+}
+resize();addEventListener('resize',resize);
+let pm={x:-9999,y:-9999};
+addEventListener('mousemove',e=>{const d=Math.min(devicePixelRatio,2);pm.x=e.clientX*d;pm.y=e.clientY*d});
+(function draw(){
+  requestAnimationFrame(draw);
+  ctx.clearRect(0,0,W,H);
+  const d=Math.min(devicePixelRatio,2);
+  pts.forEach(p=>{
+    const dx=p.x-pm.x,dy=p.y-pm.y,dist=Math.hypot(dx,dy);
+    if(dist<160*d){p.vx+=dx/dist*.03;p.vy+=dy/dist*.03}
+    p.vx*=.992;p.vy*=.992;
+    p.x+=p.vx;p.y+=p.vy;
+    if(p.x<0||p.x>W)p.vx*=-1;
+    if(p.y<0||p.y>H)p.vy*=-1;
+    p.x=Math.max(0,Math.min(W,p.x));p.y=Math.max(0,Math.min(H,p.y));
+  });
+  ctx.lineWidth=1*d;
+  for(let i=0;i<pts.length;i++){
+    for(let j=i+1;j<pts.length;j++){
+      const a=pts[i],b=pts[j];
+      const dd=Math.hypot(a.x-b.x,a.y-b.y);
+      if(dd<130*d){
+        ctx.strokeStyle=`rgba(240,238,230,${(1-dd/(130*d))*.14})`;
+        ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();
+      }
+    }
+    ctx.fillStyle='rgba(240,238,230,.4)';
+    ctx.beginPath();ctx.arc(pts[i].x,pts[i].y,pts[i].r*d,0,7);ctx.fill();
+  }
+})();
+
+/* preview */
+const prev=$('#preview'),pdivs=$$('#preview div');
+let px=0,py=0,ptx=0,pty=0,prevOn=false;
+(function pl(){
+  px=lerp(px,ptx,.12);py=lerp(py,pty,.12);
+  prev.style.left=px+'px';prev.style.top=py+'px';
+  requestAnimationFrame(pl);
+})();
+$$('.row').forEach(r=>{
+  r.addEventListener('mouseenter',()=>{
+    const i=+r.dataset.i;
+    pdivs.forEach((d,k)=>d.classList.toggle('on',k===i));
+    if(!prevOn){prevOn=true;px=mx;py=my;
+      gsap.to(prev,{opacity:1,scale:1,duration:.6,ease:'expo.out'})}
+  });
+  r.addEventListener('mouseleave',()=>{
+    prevOn=false;gsap.to(prev,{opacity:0,scale:.9,duration:.35,ease:'power2.in'});
+  });
+});
+addEventListener('mousemove',e=>{ptx=e.clientX+170;pty=e.clientY});
+
+/* teclado */
+let sel=-1;
+addEventListener('keydown',e=>{
+  const rows=$$('.row');
+  if(e.key==='ArrowDown'||e.key==='ArrowUp'){
+    e.preventDefault();
+    sel=(sel+(e.key==='ArrowDown'?1:-1)+rows.length)%rows.length;
+    rows.forEach((r,i)=>{
+      gsap.to($('.fill',r),{scaleY:i===sel?1:0,duration:.5,ease:'power3.out'});
+      gsap.to($('.tt',r),{x:i===sel?16:0,color:i===sel?'#070708':'#F0EEE6',duration:.5,ease:'power3.out'});
+      gsap.to([$('.nn',r),$('.desc',r)],{color:i===sel?'rgba(7,7,8,.6)':'',duration:.4});
+    });
+    if(sel>=0){
+      pdivs.forEach((d,k)=>d.classList.toggle('on',k===sel));
+      const rr=rows[sel].getBoundingClientRect();
+      ptx=innerWidth-230;pty=rr.top+rr.height/2;
+      gsap.to(prev,{opacity:1,scale:1,duration:.5,ease:'expo.out'});
+    }
+  }
+  if(e.key==='Enter'&&sel>=0)go($$('.row')[sel].getAttribute('href'));
+});
+
+/* transição */
+function go(href){
+  gsap.timeline({onComplete:()=>location.href=href})
+    .to('#pt i',{scaleY:1,duration:.7,stagger:.055,ease:'expo.inOut'})
+    .to('#ptT',{opacity:1,duration:.4},'-=.3')
+    .fromTo('#ptT',{letterSpacing:'.1em'},{letterSpacing:'.45em',duration:.7,ease:'power2.out'},'<');
+}
+$$('.row').forEach(r=>r.addEventListener('click',e=>{e.preventDefault();go(r.getAttribute('href'))}));
+
+/* intro */
+addEventListener('load',()=>{
+  const tl=gsap.timeline();
+  tl.to('#mark',{opacity:1,duration:1.3,ease:'expo.out'},0)
+    .from('#mark',{y:24,scale:1.05,duration:1.5,ease:'expo.out'},0)
+    .to('.head-meta',{opacity:1,duration:1},0)
+    .from('.head-meta',{y:16,duration:1,ease:'expo.out'},0)
+    .to('.hero .ln i',{y:0,duration:1.4,stagger:.11,ease:'expo.out'},.25)
+    .to('#heroP',{opacity:1,duration:1,ease:'power2.out'},'-=.85')
+    .from('#heroP',{y:22,duration:1.1,ease:'expo.out'},'<')
+    .to('.row',{opacity:1,duration:.9,stagger:.08,ease:'expo.out'},'-=.7')
+    .from('.row',{y:30,duration:1,stagger:.08,ease:'expo.out'},'<')
+    .to('.foot',{opacity:1,duration:.8},'-=.4');
+  anime({targets:'.tg',opacity:[0,1],scale:[.8,1],duration:600,delay:anime.stagger(18,{start:1400}),easing:'easeOutExpo'});
+});
+</script>
+</body>
+</html>
