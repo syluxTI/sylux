@@ -1,0 +1,157 @@
+<div class="glow"></div>
+<div class="paper-tex"></div>
+<canvas id="gl"></canvas>
+
+<div id="loader">
+  <div class="ld-in">
+    <img src="/fundo_transparente_png_by_laryssaf_d6728se-fullviewm.png" alt="SYLUX" id="ldImg">
+    <div class="ld-line"><i id="ldBar"></i></div>
+    <div class="ld-cap">Paper Edition · carregando o objeto</div>
+  </div>
+</div>
+<div class="fold" id="fold"><i></i><i></i></div>
+
+<div class="ring" id="ring"><span class="ring-txt">arraste</span></div>
+<div class="dot" id="dot"></div>
+
+<nav class="nav" id="nav">
+  <a href="/" data-trans><img src="/fundo_transparente_png_by_laryssaf_d6728se-fullviewm.png" alt="SYLUX"></a>
+  <div class="nav-mid">
+    <a href="#objeto">O objeto</a><a href="#superficies">Superfícies</a><a href="#filme">Filme</a><a href="#ficha">Ficha técnica</a>
+  </div>
+  <div class="nav-r"><button class="nav-btn" data-modal>Solicitar acesso</button></div>
+</nav>
+
+<main class="wrap">
+
+<section class="hero pad">
+  <div>
+    <img class="hero-mark" id="heroMark" src="/fundo_transparente_png_by_laryssaf_d6728se-fullviewm.png" alt="SYLUX">
+    <h1>
+      <span class="ln"><i>Uma camada de orquestração</i></span>
+      <span class="ln"><i>tão <span class="serif">silenciosa</span> quanto o vidro.</i></span>
+    </h1>
+    <p class="hero-sub">SYLUX OS reúne modelos, ferramentas e políticas sob um único objeto de controle. Nada a configurar. Tudo a observar.</p>
+    <div class="hero-cta">
+      <button class="btn btn-fill" data-modal><span>Solicitar acesso</span></button>
+      <a class="btn btn-ghost" href="#objeto">Ver como funciona</a>
+    </div>
+  </div>
+  <div class="hero-note"><i></i><span>Role para girar o objeto</span><i></i></div>
+</section>
+
+<section class="stage" id="objeto">
+  <div class="stage-pin"></div>
+  <div class="stage-steps pad">
+    <div class="step"><div class="step-card">
+      <div class="n">Camada 01</div><h3>Superfície única</h3>
+      <p>Um endpoint. Uma chave. A malha inteira por trás — 38 modelos, 400 ferramentas, política de dados aplicada antes do primeiro token.</p>
+      <div class="bar"><i></i></div></div></div>
+    <div class="step"><div class="step-card">
+      <div class="n">Camada 02</div><h3>Núcleo adaptativo</h3>
+      <p>O roteador aprende com cada execução. Latência, custo e confiança viram um só gradiente, recalculado a cada chamada.</p>
+      <div class="bar"><i></i></div></div></div>
+    <div class="step"><div class="step-card">
+      <div class="n">Camada 03</div><h3>Memória contínua</h3>
+      <p>Estado versionado por agente, com retomada exata de qualquer ponto da execução. Nada se perde entre sessões.</p>
+      <div class="bar"><i></i></div></div></div>
+    <div class="step"><div class="step-card">
+      <div class="n">Camada 04</div><h3>Prova auditável</h3>
+      <p>Cada decisão do roteador é assinada e reproduzível. Você pode reexecutar o passado exatamente como ele aconteceu.</p>
+      <div class="bar"><i></i></div></div></div>
+  </div>
+</section>
+
+<section class="panels pad" id="superficies">
+  <div class="panels-head">
+    <h2 class="split-lines">Três<br>superfícies.</h2>
+    <p>A mesma malha vista por quem constrói, por quem opera e por quem responde pelo risco. Passe o mouse para expandir.</p>
+  </div>
+  <div class="panel-row">
+    <article class="panel"><div class="fx"></div><span class="idx">01 — BUILD</span>
+      <h4>Studio</h4><p>Compositor visual de agentes com execução ao vivo, diff de prompts e versionamento por branch.</p></article>
+    <article class="panel"><div class="fx"></div><span class="idx">02 — RUN</span>
+      <h4>Console</h4><p>Painel de operação em tempo real: filas, custo por rota, saúde de cada provedor e kill-switch por política.</p></article>
+    <article class="panel"><div class="fx"></div><span class="idx">03 — PROVE</span>
+      <h4>Ledger</h4><p>Registro imutável de execuções com exportação pronta para auditoria, SOC 2 e LGPD.</p></article>
+  </div>
+</section>
+
+<section class="quote pad">
+  <blockquote id="quoteText">A melhor infraestrutura é aquela que você deixa de perceber.</blockquote>
+  <cite>Princípio de design · SYLUX OS</cite>
+</section>
+
+<section class="film pad" id="filme">
+  <div class="kicker reveal" style="margin-bottom:22px">Filme de produto · 2 min</div>
+  <div class="film-box" id="filmBox">
+    <div class="film-cover">
+      <button class="play" id="playBtn"><span class="play-ring"></span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+    </div>
+    <iframe id="filmFrame" title="Filme SYLUX" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+  </div>
+  <div class="film-cap"><span>SYLUX OS — A superfície da inteligência</span><span>Dirigido no estúdio de São Paulo</span></div>
+</section>
+
+<section class="specs pad" id="ficha">
+  <div class="kicker reveal" style="margin-bottom:34px">Ficha técnica</div>
+  <div id="specList">
+    @for (s of specs; track s.k) {
+    <div class="spec-row reveal" [attr.data-spec]="$index">
+      <span class="k">{{ pad2($index + 1) }}</span><span class="v">{{ s.v }}</span>
+      <span class="more"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span><i class="hl"></i></div>
+    }
+  </div>
+</section>
+
+<section class="end pad">
+  <div class="end-bg"></div>
+  <h2><span class="ln"><i>Comece</i></span><span class="ln"><i>pelo <span class="serif">objeto</span>.</i></span></h2>
+  <p>Acesso antecipado aberto para equipes de engenharia com volume acima de 10M de tokens por mês.</p>
+  <button class="btn btn-fill" data-modal><span>Solicitar acesso</span></button>
+</section>
+
+<section class="sw pad">
+  <div class="kicker">Outras direções</div>
+  <div class="sw-list" id="swList">
+    @for (p of pages; track p.f) {
+    <a class="sw-item" [class.here]="p.f === here" [href]="p.f" [attr.data-trans]="p.f === here ? null : ''">
+      <i class="fillbg"></i><span class="n">{{ p.n }}</span><h4>{{ p.t }}</h4><p>{{ p.d }}</p></a>
+    }
+  </div>
+</section>
+
+<footer class="pad">
+  <div class="f-top">
+    <div><img src="/m.png" alt="SYLUX">
+      <p style="font-size:13px;color:rgba(240,238,230,.5);margin-top:14px;max-width:28ch;line-height:1.6">O objeto de controle da inteligência aplicada.</p></div>
+    <div class="f-nav">
+      <div><h5>Produto</h5><ul><li><a href="#objeto">Studio</a></li><li><a href="#superficies">Console</a></li><li><a href="#ficha">Ledger</a></li></ul></div>
+      <div><h5>Empresa</h5><ul><li><a href="#">Sobre</a></li><li><a href="#">Carreiras</a></li><li><a href="#">Contato</a></li></ul></div>
+      <div><h5>Legal</h5><ul><li><a href="#">Privacidade</a></li><li><a href="#">Termos</a></li><li><a href="#">LGPD</a></li></ul></div>
+    </div>
+  </div>
+  <div class="f-end"><span>© 2026 SYLUX Technologies</span><span>Paper Edition · 02 / 05</span><span>Feito em São Paulo</span></div>
+</footer>
+
+</main>
+
+<div class="fab" id="fab">
+  <div class="fab-pop" id="fabPop">
+    <button data-modal>Solicitar acesso</button>
+    <button data-go="#filme">Assistir ao filme</button>
+    <button data-top>Voltar ao topo</button>
+  </div>
+  <button class="fab-btn" id="fabBtn"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+</div>
+
+<div class="modal" id="modal">
+  <div class="modal-bg" data-close></div>
+  <div class="sheet">
+    <button class="x" data-close><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <div id="mBody"></div>
+  </div>
+</div>
+
+<div class="pt" id="pt"><i></i><i></i></div>
+<div class="pt-mark" id="ptMark"><img src="/m.png" alt=""></div>

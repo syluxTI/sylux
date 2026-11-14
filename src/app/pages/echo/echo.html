@@ -1,0 +1,151 @@
+<canvas id="gl"></canvas>
+<div class="film"></div>
+<div class="gr"></div>
+
+<div id="intro">
+  <div class="intro-mask"><span class="intro-word" id="introWord">ECHO</span></div>
+  <div class="intro-meta"><span>SYLUX</span><span id="introPct">00</span><span>Echo Edition</span></div>
+</div>
+<div class="iris" id="iris"></div>
+
+<div class="cz" id="cz"><span id="czTxt"></span></div>
+
+<header class="top">
+  <a href="/" data-trans><img src="/m.png" alt="SYLUX"></a>
+  <div class="top-r"><a href="#s3">Produto</a><a href="#s5">Clientes</a><a href="#" data-modal>Contato</a></div>
+</header>
+
+<nav class="dots" id="dots">
+  @for (s of slides; track s) {
+  <button [attr.data-slide]="$index" [class.on]="$index === 0"><span>{{ s }}</span><i></i></button>
+  }
+</nav>
+
+<div class="prog">
+  <svg class="ring" viewBox="0 0 36 36"><circle class="bgc" cx="18" cy="18" r="15.9"/><circle class="fgc" id="progRing" cx="18" cy="18" r="15.9"/></svg>
+  <span id="progTxt">01 / 06</span>
+</div>
+
+<main>
+
+<section class="slide s1" id="s1"><div class="inner">
+  <div class="kick" data-rv>Orchestration as a Service</div>
+  <h1 class="disp">
+    <span class="mskl"><i>O eco de</i></span>
+    <span class="mskl"><i>toda decisão.</i></span>
+  </h1>
+  <p class="lead" data-rv>Cada chamada que sua aplicação faz deixa uma onda. A SYLUX captura essa onda, mede, roteia e devolve como inteligência barata, rápida e provável.</p>
+  <div class="s1-cta">
+    <button class="cta-a" data-modal data-cz="Falar">Falar com a gente</button>
+    <a class="cta-b" href="#s2" data-cz="Descer">Ver o produto</a>
+  </div>
+  <div class="scrolldown"><i></i><span>Role</span></div>
+</div></section>
+
+<section class="slide s2" id="s2"><div class="inner">
+  <div class="kick" data-rv>Tese</div>
+  <p class="big" id="thesis">A inteligência deixou de ser escassa. O que é escasso agora é o controle sobre ela.</p>
+  <div class="s2-grid">
+    <div data-rv><h5>Custo</h5><p>O preço por token cai todo mês. O desperdício por arquitetura ruim, não.</p></div>
+    <div data-rv><h5>Confiança</h5><p>Sem traço assinado, não há como provar o que o seu sistema respondeu ontem.</p></div>
+    <div data-rv><h5>Velocidade</h5><p>Trocar de modelo deveria levar minutos, não sprints inteiros.</p></div>
+  </div>
+</div></section>
+
+<section class="slide s3" id="s3"><div class="inner">
+  <div class="kick" data-rv>Produto</div>
+  <h2 class="h2"><span class="mskl"><i>Três instrumentos,</i></span><span class="mskl"><i>uma partitura.</i></span></h2>
+  <div class="trio">
+    <article class="tcard" data-cz="Abrir" data-card="0"><span class="ring3"></span><span class="sheen"></span>
+      <span class="num">01</span>
+      <h4>Conductor</h4>
+      <p>Compila intenção em grafo de execução. Decide quem toca o quê, quando e por quanto.</p>
+      <span class="go">Ver detalhes <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></article>
+    <article class="tcard" data-cz="Abrir" data-card="1"><span class="ring3"></span><span class="sheen"></span>
+      <span class="num">02</span>
+      <h4>Resonance</h4>
+      <p>Observa cada execução, mede deriva semântica e devolve o ajuste antes do usuário notar.</p>
+      <span class="go">Ver detalhes <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></article>
+    <article class="tcard" data-cz="Abrir" data-card="2"><span class="ring3"></span><span class="sheen"></span>
+      <span class="num">03</span>
+      <h4>Silence</h4>
+      <p>Políticas de dado que agem antes da saída: residência, redação e prova criptográfica.</p>
+      <span class="go">Ver detalhes <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></article>
+  </div>
+</div></section>
+
+<section class="slide s4" id="s4"><div class="inner">
+  <div class="kick" data-rv>Trajetória</div>
+  <h2 class="h2"><span class="mskl"><i>De um script</i></span><span class="mskl"><i>a uma malha.</i></span></h2>
+  <div class="rail">
+    <div class="rail-track" id="railTrack">
+      <div class="ritem"><div class="yr">2023</div><h4>Primeiro roteador</h4><p>Um script interno para escolher entre dois modelos sem derrubar a produção.</p><div class="dotline"><b></b>4 clientes internos</div></div>
+      <div class="ritem"><div class="yr">2024</div><h4>Malha pública</h4><p>Abrimos a API. 12 modelos, uma região, um painel feio e muito rápido.</p><div class="dotline"><b></b>180 times</div></div>
+      <div class="ritem"><div class="yr">2025</div><h4>Prova e política</h4><p>Traço assinado, replay exato e residência de dado por região. SOC 2 Tipo II.</p><div class="dotline"><b></b>1.400 times</div></div>
+      <div class="ritem"><div class="yr">2026</div><h4>Echo</h4><p>A malha aprende com o próprio eco: cada execução ajusta a próxima rota.</p><div class="dotline"><b></b>2.800 times</div></div>
+      <div class="ritem"><div class="yr">Próximo</div><h4>Malha privada</h4><p>Seu modelo, seu hardware, nossa orquestração — dentro da sua VPC.</p><div class="dotline"><b></b>em testes fechados</div></div>
+    </div>
+    <div class="rail-ui">
+      <button id="railPrev"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button>
+      <button id="railNext"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
+      <div class="lineprog"><i id="railProg"></i></div>
+      <span style="font-size:10.5px;letter-spacing:.18em;color:var(--p3)">arraste</span>
+    </div>
+  </div>
+</div></section>
+
+<section class="slide s5" id="s5"><div class="inner">
+  <div class="kick" data-rv>Quem usa</div>
+  <div class="quotes" id="quotes">
+    <div class="qt on"><blockquote>Cortamos 64% do custo de inferência sem trocar uma linha do produto.</blockquote>
+      <cite>Diretora de Engenharia · fintech com 9M de usuários</cite></div>
+    <div class="qt"><blockquote>O replay assinado encerrou três meses de discussão com a auditoria.</blockquote>
+      <cite>Head de Dados · seguradora nacional</cite></div>
+    <div class="qt"><blockquote>Trocamos de provedor numa sexta-feira à tarde. Ninguém percebeu.</blockquote>
+      <cite>Staff Engineer · marketplace B2B</cite></div>
+  </div>
+  <div class="qnav" id="qnav">
+    @for (q of [0, 1, 2]; track q) {
+    <button [attr.data-q]="q"><i></i></button>
+    }
+  </div>
+  <div class="logos"><span>NEXO</span><span>ARBOR</span><span>VELA</span><span>MERIDIAN</span><span>KÓS</span><span>ATLAS</span></div>
+</div></section>
+
+<section class="slide s6" id="s6"><div class="inner">
+  <div class="kick" data-rv>Fim da sessão</div>
+  <h2 class="disp"><span class="mskl"><i>Faça eco.</i></span></h2>
+  <p class="lead" style="margin:28px auto 0;text-align:center" data-rv>Comece hoje com 1 milhão de tokens por mês, sem cartão. Suba quando a onda crescer.</p>
+  <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:36px" data-rv>
+    <button class="cta-a" data-modal data-cz="Enviar">Falar com a gente</button>
+  </div>
+  <div class="s6-links" id="swLinks">
+    @for (p of pages; track p.t) {
+      @if (p.f === here) {
+      <a style="opacity:.3;pointer-events:none">{{ p.t }}</a>
+      } @else {
+      <a [href]="p.f" data-trans>{{ p.t }}</a>
+      }
+    }
+  </div>
+  <div class="s6-foot"><span>© 2026 SYLUX Technologies</span><span>Echo Edition · 05 / 05</span><span>São Paulo · Lisboa · Austin</span></div>
+</div></section>
+
+</main>
+
+<div class="fabs">
+  <button class="fb" id="sndBtn"><em>Ambiente sonoro</em><span class="eq" id="eq"><b></b><b></b><b></b><b></b></span></button>
+  <button class="fb" id="topBtn"><em>Voltar ao topo</em><svg viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></svg></button>
+</div>
+<button class="fab-main" data-modal data-cz="Enviar"><i></i>Falar com a gente</button>
+
+<div class="md" id="md">
+  <div class="md-bg" data-x></div>
+  <div class="md-card">
+    <button class="cl" data-x><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <div id="mdBody"></div>
+  </div>
+</div>
+
+<div class="ptr" id="ptr"></div>
+<div class="ptr-t" id="ptrT">SYLUX</div>

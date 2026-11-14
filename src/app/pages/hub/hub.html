@@ -1,0 +1,49 @@
+<canvas id="net"></canvas>
+<div class="vg"></div>
+<div class="gr"></div>
+<div class="cur" id="cur"></div>
+
+<div class="preview" id="preview">
+  <div data-p="0" style="background:radial-gradient(circle at 50% 50%,#2a2a30,#070708 70%)"></div>
+  <div data-p="1" style="background:linear-gradient(170deg,#F0EEE6,#cfccc2)"></div>
+  <div data-p="2" style="background:conic-gradient(from 210deg at 40% 60%,#0a0a0c,#51515a,#F0EEE6,#1a1a1e,#0a0a0c)"></div>
+  <div data-p="3" style="background:#F0EEE6;background-image:linear-gradient(rgba(13,13,12,.14) 1px,transparent 1px),linear-gradient(90deg,rgba(13,13,12,.14) 1px,transparent 1px);background-size:22px 22px"></div>
+  <div data-p="4" style="background:radial-gradient(circle at 60% 35%,#d7d4cb,#15151a 55%,#070708)"></div>
+</div>
+
+<main>
+  <div class="head">
+    <img src="/m.png" alt="SYLUX" id="mark">
+    <div class="head-meta">Orchestration as a Service<br>Cinco direções visuais · 2026</div>
+  </div>
+
+  <section class="hero">
+    <h1>
+      <span class="ln"><i>Uma marca.</i></span>
+      <span class="ln"><i><b>Cinco universos.</b></i></span>
+    </h1>
+    <p id="heroP">O mesmo produto — uma camada de orquestração para IA — interpretado em cinco linguagens visuais independentes. Cada página carrega seu próprio motor de animação, sua própria física e seu próprio ritmo.</p>
+  </section>
+
+  <nav class="list" id="list">
+    @for (p of pages; track p.f) {
+    <a class="row" [href]="p.f" [attr.data-i]="$index">
+      <i class="fill"></i>
+      <span class="nn">{{ p.n }}</span>
+      <span class="tt">{{ p.t }}</span>
+      <span class="desc">{{ p.d }}</span>
+      <span class="tagwrap">@for (g of p.g; track g) {<span class="tg">{{ g }}</span>}</span>
+      <span class="arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
+    }
+  </nav>
+
+  <div class="foot">
+    <span>© 2026 SYLUX Technologies</span>
+    <span>GSAP · Three.js · anime.js · WebGL · Web Audio</span>
+    <span>Use ↑ ↓ e ⏎ para navegar</span>
+  </div>
+</main>
+
+<div class="pt" id="pt"><i></i><i></i><i></i><i></i><i></i></div>
+<div class="pt-t" id="ptT">SYLUX</div>

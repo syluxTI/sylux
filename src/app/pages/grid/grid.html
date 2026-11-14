@@ -1,0 +1,187 @@
+<div class="gridbg"></div>
+
+<div id="boot"><div class="boot-box" id="bootBox"></div></div>
+<div class="shutter" id="shutter"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+
+<header class="hdr">
+  <div class="hdr-main">
+    <div class="hdr-l">
+      <a href="/" data-trans><img src="/fundo_transparente_png_by_laryssaf_d6728se-fullviewm.png" alt="SYLUX"></a>
+      <nav class="hdr-nav">
+        <a href="#topologia">Topologia</a><a href="#painel">Painel</a><a href="#comparativo">Comparativo</a><a href="#final">Preços</a>
+      </nav>
+    </div>
+    <div class="hdr-r">
+      <button class="kbd" id="kbdBtn">Buscar<b>⌘K</b></button>
+      <button class="btn-dark" data-modal="demo">Abrir console</button>
+    </div>
+  </div>
+  <div class="ticker"><div class="ticker-in" id="ticker"></div></div>
+</header>
+
+<main>
+
+<section class="hero pad">
+  <div>
+    <div class="lbl rv">SYLUX GRID · PLANO DE CONTROLE</div>
+    <h1 class="h1" style="margin-top:20px">
+      <span class="ln"><i>Toda a sua IA</i></span>
+      <span class="ln"><i>em uma única</i></span>
+      <span class="ln"><i>superfície.</i></span>
+    </h1>
+    <p class="body rv" style="margin-top:24px;max-width:44ch">Um plano de controle para modelos, ferramentas e políticas. Observável por token, reversível por commit, operável por qualquer um do time.</p>
+    <div class="hero-tags rv">
+      <span class="tag">38 modelos</span><span class="tag">12 regiões</span><span class="tag">SOC 2 Tipo II</span>
+      <span class="tag">p50 140ms</span><span class="tag">Drop-in OpenAI</span>
+    </div>
+    <div class="hero-cta rv">
+      <button class="b1" data-modal="demo">Criar projeto</button>
+      <button class="b2" id="openCmd">Explorar comandos ⌘K</button>
+    </div>
+  </div>
+  <div class="term rv" id="term">
+    <div class="term-bar">
+      <i></i><i></i><i></i><span>sylux&#64;malha — zsh</span>
+      <div class="tabs"><button class="on" data-tab="0">deploy</button><button data-tab="1">trace</button><button data-tab="2">cost</button></div>
+    </div>
+    <div class="term-body" id="termBody"></div>
+  </div>
+</section>
+
+<section class="topo pad" id="topologia">
+  <div class="topo-head">
+    <div>
+      <div class="lbl rv">Topologia ao vivo</div>
+      <h2 class="h2 rv" style="margin-top:14px">A malha, como ela<br>realmente é.</h2>
+    </div>
+    <p class="body rv" style="max-width:40ch">Cada nó é um provedor, uma ferramenta ou uma política. Arraste para girar, passe o mouse para inspecionar, clique para abrir o nó.</p>
+  </div>
+  <div class="topo-stage rv">
+    <canvas id="topoCv"></canvas>
+    <div class="topo-ui" id="topoUi"></div>
+    <div class="tip" id="tip"></div>
+    <div class="topo-hint">arraste · role para aproximar</div>
+    <div class="topo-legend">
+      <span><b style="background:#0D0D0C"></b>Roteador</span>
+      <span><b style="background:#1C7F4E"></b>Provedor ativo</span>
+      <span><b style="background:#9A6B12"></b>Degradado</span>
+      <span><b style="background:rgba(13,13,12,.3)"></b>Ferramenta</span>
+    </div>
+  </div>
+</section>
+
+<section class="board pad" id="painel">
+  <div class="lbl rv">Painel de operação</div>
+  <h2 class="h2 rv" style="margin:14px 0 30px">Tudo que acontece,<br>enquanto acontece.</h2>
+  <div class="board-grid">
+    <div class="cell c4 rv">
+      <div class="cell-h"><h4>Tokens por minuto</h4><span class="st"><i></i>ao vivo</span></div>
+      <div class="kpi" data-kpi="2940000" data-fmt="compact">0</div>
+      <div class="kpi-sub">+18,4% vs. ontem</div>
+      <svg class="spark" viewBox="0 0 300 60" preserveAspectRatio="none" id="sp1"><path class="area"/><path class="line"/></svg>
+    </div>
+    <div class="cell c4 rv">
+      <div class="cell-h"><h4>Custo por 1M tokens</h4><span class="st"><i></i>otimizando</span></div>
+      <div class="kpi">R$ <span data-kpi="4.2" data-dec="2">0</span></div>
+      <div class="kpi-sub">−61% desde a ativação do roteador</div>
+      <svg class="spark" viewBox="0 0 300 60" preserveAspectRatio="none" id="sp2"><path class="area"/><path class="line"/></svg>
+    </div>
+    <div class="cell c4 rv">
+      <div class="cell-h"><h4>Latência p50</h4><span class="st"><i></i>estável</span></div>
+      <div class="kpi"><span data-kpi="140">0</span><small>ms</small></div>
+      <div class="kpi-sub">p95 310ms · p99 640ms</div>
+      <svg class="spark" viewBox="0 0 300 60" preserveAspectRatio="none" id="sp3"><path class="area"/><path class="line"/></svg>
+    </div>
+    <div class="cell c8 rv">
+      <div class="cell-h"><h4>Distribuição por provedor nas últimas 24h</h4><span class="lbl">tokens</span></div>
+      <div class="bars" id="bars"></div>
+      <div class="bars-x" id="barsX"></div>
+    </div>
+    <div class="cell c4 rv">
+      <div class="cell-h"><h4>Stream de execução</h4><span class="st"><i></i>conectado</span></div>
+      <div class="logs"><div class="logs-in" id="logs"></div></div>
+    </div>
+    <div class="cell c6 rv">
+      <div class="cell-h"><h4>Saúde por região</h4><span class="lbl">disponibilidade</span></div>
+      <div class="rows" id="regions"></div>
+    </div>
+    <div class="cell c6 rv">
+      <div class="cell-h"><h4>Orçamento do mês</h4><span class="lbl">R$ 48.200 / R$ 70.000</span></div>
+      <div class="rows" id="budget"></div>
+    </div>
+  </div>
+</section>
+
+<section class="cmp pad" id="comparativo">
+  <div class="lbl rv">Comparativo</div>
+  <h2 class="h2 rv" style="margin-top:14px">Antes e depois<br>do plano de controle.</h2>
+  <div class="cmp-wrap">
+  <table class="cmp-t rv">
+    <thead><tr><th>Operação</th><th>Com SYLUX Grid</th><th>Sem orquestração</th></tr></thead>
+    <tbody>
+      <tr><td>Trocar de provedor</td><td class="y">1 linha de política</td><td class="n">2 a 3 semanas de refactor</td></tr>
+      <tr><td>Descobrir regressão de qualidade</td><td class="y">Alerta em 4 minutos</td><td class="n">Ticket do cliente</td></tr>
+      <tr><td>Auditar uma execução antiga</td><td class="y">Replay exato por ID</td><td class="n">Logs parciais, se houver</td></tr>
+      <tr><td>Conter custo de um agente em loop</td><td class="y">Budget guard automático</td><td class="n">Fatura no fim do mês</td></tr>
+      <tr><td>Rodar A/B entre dois modelos</td><td class="y">Toggle com split de tráfego</td><td class="n">Branch e deploy manual</td></tr>
+      <tr><td>Garantir residência de dado</td><td class="y">Política declarativa por região</td><td class="n">Confiança no provedor</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section class="cta pad" id="final">
+  <div class="lbl rv">Começar</div>
+  <h2 class="h1 rv" style="margin-top:18px">Abra o console.</h2>
+  <p class="body rv">Plano gratuito até 1M de tokens por mês. Sem cartão, sem chamada de vendas, sem migração de código — a API é compatível com o que você já usa.</p>
+  <button class="cta-cmd rv" id="openCmd2">Pressione <b>⌘</b><b>K</b> para começar</button>
+</section>
+
+<section class="sw pad">
+  <div class="lbl">Outras direções</div>
+  <div class="sw-grid" id="swGrid">
+    @for (p of pages; track p.f) {
+    <a class="sw-card" [class.here]="p.f === here" [href]="p.f" [attr.data-trans]="p.f === here ? null : ''">
+      <div class="n">{{ p.n }}</div><h4>{{ p.t }}</h4><p>{{ p.d }}</p></a>
+    }
+  </div>
+</section>
+
+<footer class="pad">
+  <span>© 2026 SYLUX Technologies</span><span>Grid Edition · 04 / 05</span><span id="clock">--:--:--</span>
+</footer>
+
+</main>
+
+<div class="fab" id="fab">
+  <div class="fab-list" id="fabList">
+    <button data-modal="demo">Criar projeto</button>
+    <button data-cmd>Abrir comandos</button>
+    <button data-top>Voltar ao topo</button>
+  </div>
+  <button class="fab-b" id="fabB"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+</div>
+
+<div class="cmdk" id="cmdk">
+  <div class="cmdk-bg" data-ccls></div>
+  <div class="cmdk-box">
+    <div class="cmdk-in">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+      <input id="cmdInput" placeholder="Buscar comandos, seções, documentação…" autocomplete="off">
+      <kbd>ESC</kbd>
+    </div>
+    <div class="cmdk-list" id="cmdList"></div>
+    <div class="cmdk-foot"><span>↑↓ navegar</span><span>⏎ selecionar</span><span>ESC fechar</span></div>
+  </div>
+</div>
+
+<div class="mdl" id="mdl">
+  <div class="mdl-bg" data-mcls></div>
+  <div class="mdl-card">
+    <button class="xx" data-mcls><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <div id="mdlBody"></div>
+  </div>
+</div>
+
+<div class="pt" id="pt"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+<div class="pt-l" id="ptL">CARREGANDO</div>

@@ -1,0 +1,362 @@
+  <div class="grain"></div>
+  <div class="vignette"></div>
+  <canvas id="gl"></canvas>
+
+  <div id="loader">
+    <div class="ld-wrap">
+      <div class="ld-mark" id="ldMark">SYLUX</div>
+      <div class="ld-bar"><i id="ldBar"></i></div>
+      <div class="ld-meta"><span>Orbit Edition</span><span id="ldPct">000</span></div>
+    </div>
+  </div>
+  <div class="ld-curtain" id="ldCurtain"><i></i><i></i><i></i><i></i><i></i></div>
+
+  <div class="cur" id="cur"></div>
+  <div class="cur-dot" id="curDot"></div>
+  <div class="cur-label" id="curLabel"></div>
+
+  <nav class="nav" id="nav">
+    <a class="nav-logo" href="/" data-trans data-cur="Hub">
+      <img src="/m.png" alt="SYLUX">
+    </a>
+    <div class="nav-links" id="navLinks">
+      <i class="nav-pill" id="navPill"></i>
+      <a href="#camadas" class="on">Camadas</a>
+      <a href="#malha">Malha</a>
+      <a href="#escala">Escala</a>
+      <a href="#planos">Planos</a>
+    </div>
+    <button class="nav-cta" data-modal="demo">Agendar demo</button>
+  </nav>
+
+  <main class="wrap">
+
+    <section class="hero pad">
+      <div class="eyebrow reveal-up">Orchestration as a Service · v4.2</div>
+      <h1 style="margin-top:22px">
+        <span class="ln"><i>Orquestre a</i></span>
+        <span class="ln"><i><b>inteligência</b></i></span>
+        <span class="ln"><i><em>como energia.</em></i></span>
+      </h1>
+      <div class="hero-foot">
+        <p class="hero-copy reveal-up">A SYLUX transforma modelos dispersos, ferramentas e dados em uma única malha viva
+          de execução. Você descreve a intenção — a orbe decide a rota, o modelo e o custo.</p>
+        <div class="hero-stats">
+          <div class="stat reveal-up"><b data-count="99.99" data-dec="2">0</b><span>Uptime SLA</span></div>
+          <div class="stat reveal-up"><b data-count="38">0</b><span>Modelos na malha</span></div>
+          <div class="stat reveal-up"><b data-count="12">0</b><span>Regiões</span></div>
+        </div>
+      </div>
+      <div class="scroll-hint"><i></i><span>Role</span></div>
+    </section>
+
+    <section class="mq" id="mq">
+      <div class="mq-row">
+        <span>Roteamento semântico</span><b></b><span>Fallback determinístico</span><b></b><span>Observabilidade por
+          token</span><b></b>
+        <span>Custo preditivo</span><b></b><span>Sandbox de ferramentas</span><b></b><span>Memória
+          vetorial</span><b></b>
+      </div>
+      <div class="mq-row" aria-hidden="true">
+        <span>Roteamento semântico</span><b></b><span>Fallback determinístico</span><b></b><span>Observabilidade por
+          token</span><b></b>
+        <span>Custo preditivo</span><b></b><span>Sandbox de ferramentas</span><b></b><span>Memória
+          vetorial</span><b></b>
+      </div>
+    </section>
+
+    <section class="manifesto pad" id="camadas">
+      <p id="manifestoText">A infraestrutura de IA quebrou porque tratamos modelos como produtos. A SYLUX trata
+        inteligência como corrente: ela flui para onde há demanda.</p>
+      <div class="side">
+        <div class="reveal-up">
+          <h4>01 · Intenção</h4>Você declara o resultado esperado, não o pipeline. O compilador de intenção resolve o
+          grafo.
+        </div>
+        <div class="reveal-up">
+          <h4>02 · Rota</h4>O roteador avalia latência, custo e confiança em tempo real, a cada chamada.
+        </div>
+        <div class="reveal-up">
+          <h4>03 · Prova</h4>Cada execução gera um traço assinado, reproduzível e auditável por token.
+        </div>
+      </div>
+    </section>
+
+    <section class="hz" id="malha">
+      <div class="hz-track" id="hzTrack">
+        <div class="hz-head">
+          <div class="eyebrow">A malha</div>
+          <h2>Quatro<br>camadas.<br>Um tecido.</h2>
+          <p>Cada módulo opera isolado e compõe com os demais. Arraste ou role lateralmente para percorrer a malha.</p>
+        </div>
+
+        <article class="card tilt">
+          <div class="card-ic"><svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="3" />
+              <circle cx="12" cy="12" r="9" />
+              <path d="M12 3v3M12 18v3M3 12h3M18 12h3" />
+            </svg></div>
+          <div>
+            <div class="card-n">MÓDULO 01</div>
+            <h3>Core Runtime</h3>
+            <p>Execução de agentes com isolamento por processo, checkpoint contínuo e retomada em milissegundos.</p>
+            <ul>
+              <li>WASM</li>
+              <li>Checkpoint</li>
+              <li>Multi-tenant</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card tilt">
+          <div class="card-ic"><svg viewBox="0 0 24 24">
+              <path d="M4 7h16M4 12h16M4 17h16" />
+              <circle cx="8" cy="7" r="2" />
+              <circle cx="15" cy="12" r="2" />
+              <circle cx="11" cy="17" r="2" />
+            </svg></div>
+          <div>
+            <div class="card-n">MÓDULO 02</div>
+            <h3>Mesh Router</h3>
+            <p>Roteamento semântico entre 38 modelos. Decide por custo, latência e confiança antes do primeiro token.
+            </p>
+            <ul>
+              <li>Fallback</li>
+              <li>A/B vivo</li>
+              <li>Budget guard</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card tilt">
+          <div class="card-ic"><svg viewBox="0 0 24 24">
+              <path d="M3 12s3.5-6 9-6 9 6 9 6-3.5 6-9 6-9-6-9-6z" />
+              <circle cx="12" cy="12" r="2.5" />
+            </svg></div>
+          <div>
+            <div class="card-n">MÓDULO 03</div>
+            <h3>Lens Telemetry</h3>
+            <p>Traços por token, replay de execução e detecção de deriva semântica com alerta em tempo real.</p>
+            <ul>
+              <li>Replay</li>
+              <li>Drift</li>
+              <li>Audit log</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card tilt">
+          <div class="card-ic"><svg viewBox="0 0 24 24">
+              <rect x="4" y="4" width="16" height="16" rx="4" />
+              <path d="M9 12l2 2 4-4" />
+            </svg></div>
+          <div>
+            <div class="card-n">MÓDULO 04</div>
+            <h3>Vault Policy</h3>
+            <p>Políticas declarativas de dado, residência regional e redação automática antes de qualquer saída.</p>
+            <ul>
+              <li>PII shield</li>
+              <li>Residência</li>
+              <li>SOC 2</li>
+            </ul>
+          </div>
+        </article>
+
+        <div style="flex-shrink:0;width:clamp(20px,5vw,74px)"></div>
+      </div>
+    </section>
+
+    <section class="metrics pad" id="escala">
+      <div class="eyebrow reveal-up" style="margin-bottom:34px">Escala em produção</div>
+      <div class="m-grid">
+        <div class="m-cell"><b data-count="4.2" data-dec="1">0</b><span>bilhões de tokens orquestrados por dia na malha
+            global</span></div>
+        <div class="m-cell"><b data-count="61">0</b><span><sup>%</sup> de redução média de custo após 30 dias de
+            roteamento adaptativo</span></div>
+        <div class="m-cell"><b data-count="140">0</b><span>milissegundos de overhead p50 adicionados pelo
+            roteador</span></div>
+        <div class="m-cell"><b data-count="2800">0</b><span>equipes de engenharia construindo sobre a SYLUX</span></div>
+      </div>
+    </section>
+
+    <section class="pricing pad" id="planos">
+      <div class="p-head">
+        <div>
+          <div class="eyebrow" style="margin-bottom:16px">Planos</div>
+          <h2>Pague pela<br>orquestração.</h2>
+        </div>
+        <div class="toggle" id="toggle">
+          <i></i>
+          <button class="on" data-mode="m">Mensal</button>
+          <button data-mode="y">Anual · −20%</button>
+        </div>
+      </div>
+      <div class="plans">
+        <div class="plan reveal-up">
+          <div class="pl-name">Signal</div>
+          <div class="pl-price"><span data-m="0" data-y="0">R$ 0</span></div>
+          <div class="pl-meta">Até 1M de tokens orquestrados por mês</div>
+          <ul class="pl-list">
+            <li>Mesh Router com 6 modelos</li>
+            <li>Traços de 7 dias</li>
+            <li>1 projeto, 3 membros</li>
+            <li>Comunidade</li>
+          </ul>
+          <button class="pl-btn" data-modal="demo">Começar grátis</button>
+        </div>
+        <div class="plan feat reveal-up">
+          <span class="pl-tag">Mais adotado</span>
+          <div class="pl-name">Mesh</div>
+          <div class="pl-price"><span data-m="R$ 890" data-y="R$ 712">R$ 890</span><small>/mês</small></div>
+          <div class="pl-meta">Até 120M de tokens · excedente a R$ 4,20/M</div>
+          <ul class="pl-list">
+            <li>Malha completa com 38 modelos</li>
+            <li>Lens Telemetry com replay de 90 dias</li>
+            <li>Vault Policy e residência BR</li>
+            <li>Projetos ilimitados</li>
+            <li>Suporte 24/7 com SLA de 1h</li>
+          </ul>
+          <button class="pl-btn" data-modal="demo">Falar com vendas</button>
+        </div>
+        <div class="plan reveal-up">
+          <div class="pl-name">Singular</div>
+          <div class="pl-price"><span data-m="Sob medida" data-y="Sob medida">Sob medida</span></div>
+          <div class="pl-meta">Volume dedicado, VPC ou on-premise</div>
+          <ul class="pl-list">
+            <li>Plano de controle isolado</li>
+            <li>Modelos privados na malha</li>
+            <li>SLA 99,99% com crédito</li>
+            <li>Arquiteto de soluções dedicado</li>
+          </ul>
+          <button class="pl-btn" data-modal="demo">Conversar</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta pad">
+      <h2>
+        <span class="ln"><i>Pronto para</i></span>
+        <span class="ln"><i><b>orquestrar?</b></i></span>
+      </h2>
+      <button class="cta-btn" data-modal="demo" data-cur="Vamos">
+        Ativar a malha
+        <svg viewBox="0 0 24 24">
+          <path d="M5 12h14M13 6l6 6-6 6" />
+        </svg>
+      </button>
+    </section>
+
+    <section class="switcher">
+      <div class="pad" style="margin-bottom:30px">
+        <div class="eyebrow">Outras direções</div>
+        <p style="font-size:clamp(20px,2.6vw,30px);font-weight:300;letter-spacing:-.03em;margin-top:12px">Cinco
+          universos para a mesma marca.</p>
+      </div>
+      <div class="sw-list" id="swList">
+        @for (p of pages; track p.f) {
+        <a class="sw-item" [class.cur-page]="p.f === here" [href]="p.f"
+          [attr.data-trans]="p.f === here ? null : ''" data-cur="Abrir">
+          <i class="bgfill"></i><span class="n">{{ p.n }}</span><h4>{{ p.t }}</h4><p>{{ p.d }}</p></a>
+        }
+      </div>
+    </section>
+
+    <footer class="pad">
+      <div class="f-grid">
+        <div class="f-logo">
+          <img src="/m.png" alt="SYLUX">
+          <p style="font-size:13px;color:var(--paper-dim);line-height:1.6;max-width:30ch">Infraestrutura de orquestração
+            de inteligência. São Paulo · Lisboa · Austin.</p>
+        </div>
+        <div>
+          <h5>Produto</h5>
+          <ul>
+            <li><a href="#camadas">Core Runtime</a></li>
+            <li><a href="#malha">Mesh Router</a></li>
+            <li><a href="#escala">Lens</a></li>
+            <li><a href="#planos">Vault</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Empresa</h5>
+          <ul>
+            <li><a href="#">Manifesto</a></li>
+            <li><a href="#">Carreiras</a></li>
+            <li><a href="#">Imprensa</a></li>
+            <li><a href="#">Segurança</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Recursos</h5>
+          <ul>
+            <li><a href="#">Documentação</a></li>
+            <li><a href="#">Status</a></li>
+            <li><a href="#">Changelog</a></li>
+            <li><a href="#">API</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="f-bot">
+        <span>© 2026 SYLUX Technologies</span>
+        <span>Orbit Edition · 01 / 05</span>
+        <span>Privacidade · Termos</span>
+      </div>
+    </footer>
+
+  </main>
+
+  <div class="fab" id="fab">
+    <button class="fab-item" data-modal="demo"><span class="fab-tip">Demo</span><svg viewBox="0 0 24 24">
+        <path d="M8 5v14l11-7z" />
+      </svg></button>
+    <button class="fab-item" data-scroll="#planos"><span class="fab-tip">Planos</span><svg viewBox="0 0 24 24">
+        <path d="M3 12h4l3-8 4 16 3-8h4" />
+      </svg></button>
+    <button class="fab-item" data-top><span class="fab-tip">Topo</span><svg viewBox="0 0 24 24">
+        <path d="M12 19V5M6 11l6-6 6 6" />
+      </svg></button>
+    <button class="fab-main" id="fabMain"><svg viewBox="0 0 24 24">
+        <path d="M12 5v14M5 12h14" />
+      </svg></button>
+  </div>
+
+  <div class="modal" id="modal">
+    <div class="modal-bg" data-close></div>
+    <div class="modal-box">
+      <button class="modal-x" data-close><svg viewBox="0 0 24 24">
+          <path d="M6 6l12 12M18 6L6 18" />
+        </svg></button>
+      <div id="modalForm">
+        <div class="eyebrow">Acesso antecipado</div>
+        <h3>Veja a malha<br>funcionando.</h3>
+        <p>30 minutos com um arquiteto. Trazemos seu caso real rodando na orbe antes da chamada terminar.</p>
+        <form id="form">
+          <div class="field"><input type="text" id="f1" required><label for="f1">Nome completo</label></div>
+          <div class="field"><input type="email" id="f2" required><label for="f2">E-mail corporativo</label></div>
+          <div class="field"><select id="f3">
+              <option>Volume estimado por mês</option>
+              <option>Até 1M de tokens</option>
+              <option>1M – 50M</option>
+              <option>50M – 500M</option>
+              <option>Acima de 500M</option>
+            </select></div>
+          <div class="field"><textarea id="f4"></textarea><label for="f4">O que você quer orquestrar?</label></div>
+          <button type="submit" class="modal-submit">Reservar horário</button>
+          <p class="modal-note">Sem spam. Respondemos em até 4 horas úteis.</p>
+        </form>
+      </div>
+      <div id="modalOk" style="display:none">
+        <div class="ok-state">
+          <div class="ok-ring"><svg viewBox="0 0 24 24" id="okCheck">
+              <path d="M5 13l4 4L19 7" />
+            </svg></div>
+          <h3 style="margin-bottom:10px">Recebido.</h3>
+          <p style="color:var(--paper-dim);font-size:14px;line-height:1.6">Sua solicitação entrou na fila. Um arquiteto
+            da SYLUX responde em breve com três horários.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pt" id="pt"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="pt-word" id="ptWord">SYLUX</div>
