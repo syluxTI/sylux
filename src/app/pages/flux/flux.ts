@@ -610,7 +610,7 @@ export class Flux implements AfterViewInit, OnDestroy {
         anime({ targets: '.boot-sub', opacity: 0, duration: 400 });
         this.rt.td.timeout(() => {
           const w = $('#wipe');
-          gsap 
+          gsap
             .timeline()
             .to(w, { clipPath: 'circle(140% at 50% 50%)', duration: 0.85, ease: 'expo.inOut' })
             .set('#boot', { display: 'none' })
