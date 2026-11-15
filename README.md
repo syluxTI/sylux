@@ -24,8 +24,26 @@ npm run build      # dist/sylux
 | `/flux`   | Flux Edition      | `lp-03-flux.html`  |
 | `/grid`   | Grid Edition      | `lp-04-grid.html`  |
 | `/echo`   | Echo Edition      | `lp-05-echo.html`  |
+| `**`      | 404 — Fora da malha | —                |
 
 Os HTMLs originais continuam na raiz do repositório, intactos, como referência.
+
+## 404
+
+Qualquer rota não existente cai em `src/app/pages/not-found/`, uma página com motor próprio — não é um
+redirect para o hub. Ela mostra o caminho que o usuário tentou (`location.pathname + search + hash`),
+decodificado e embaralhado caractere a caractere, e roda:
+
+- **Three.js** — dois passes no mesmo renderer: um plano full-screen com shader de fbm/contornos e bandas
+  de glitch, e 15 mil partículas que saem do caos e se formam no `404` amostrado de um glifo em canvas.
+- **GSAP + ScrollTrigger** — loader, timeline de entrada, trilha de progresso, parallax do `404`, revelação
+  das seções, contadores e o scrub que dissolve as partículas conforme a página desce.
+- **anime.js** — scramble do marcador no loader, glitch RGB do `404` e stagger das tags.
+- **Canvas 2D** — radar de varredura dos 38 nós (sweep cônico, blips e alvo que nunca resolve) e o
+  sparkline do sinal de retorno.
+- **Web Audio** — drone de sinal perdido gerado em tempo real, com ruído, quedas periódicas, ping a cada
+  nó varrido e estática nos glitches. Desligado por padrão, no botão `Sinal` ou na tecla `S`.
+- **Teclado** — `↑ ↓` seleciona rota, `⏎` navega, `R` reescaneia a malha, `S` liga o som, `Esc` volta ao hub.
 
 ## Estrutura
 

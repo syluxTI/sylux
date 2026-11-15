@@ -31,5 +31,9 @@ export const routes: Routes = [
     title: 'SYLUX · Echo — O eco da inteligência',
     loadComponent: () => import('./pages/echo/echo').then((m) => m.Echo),
   },
-  { path: '**', redirectTo: '' },
+  {
+    path: '**',
+    title: 'SYLUX · 404 — Rota fora da malha',
+    loadComponent: () => import('./pages/not-found/not-found').then((m) => m.NotFound),
+  },
 ];
