@@ -23,16 +23,6 @@
               {
                 "glob": "**/*",
                 "input": "public"
-              },
-              {
-                "glob": "m.png",
-                "input": ".",
-                "output": "."
-              },
-              {
-                "glob": "fundo_transparente_png_by_laryssaf_d6728se-fullviewm.png",
-                "input": ".",
-                "output": "."
               }
             ],
             "styles": [

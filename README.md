@@ -26,7 +26,7 @@ npm run build      # dist/sylux
 | `/echo`   | Echo Edition      | `lp-05-echo.html`  |
 | `**`      | 404 — Fora da malha | —                |
 
-Os HTMLs originais continuam na raiz do repositório, intactos, como referência.
+Os HTMLs originais continuam em `old/`, intactos, como referência.
 
 ## 404
 
@@ -48,6 +48,8 @@ decodificado e embaralhado caractere a caractere, e roda:
 ## Estrutura
 
 ```
+public/
+  assets/img/                 logos, imagens e favicons servidos em /assets/img/
 src/
   index.html                  shell único (base href, fontes de todas as páginas)
   styles.css                  apenas app-root { display: contents }
