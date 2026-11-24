@@ -1,0 +1,65 @@
+name: Deploy no GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Build do Angular
+        run: npm run build
+
+      # O GitHub Pages nao tem fallback de SPA: cada rota conhecida ganha uma
+      # copia do index.html (resposta 200) e o 404.html cobre o resto.
+      - name: Fallback das rotas do SPA
+        run: |
+          OUT=dist/sylux/browser
+          if [ ! -d "$OUT" ]; then OUT=dist/sylux; fi
+          for rota in orbit paper flux grid echo; do
+            cp "$OUT/index.html" "$OUT/$rota.html"
+          done
+          cp "$OUT/index.html" "$OUT/404.html"
+          echo "OUT=$OUT" >> "$GITHUB_ENV"
+
+      - name: Configurar Pages
+        uses: actions/configure-pages@v5
+
+      - name: Enviar artefato
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: ${{ env.OUT }}
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publicar no GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
