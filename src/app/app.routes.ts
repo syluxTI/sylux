@@ -3,7 +3,7 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: '',
-    title: 'SYLUX — Cinco direções',
+    title: 'SYLUX — Software house, T.I e Tráfego Pago com IA',
     loadComponent: () => import('./pages/hub/hub').then((m) => m.Hub),
   },
   {
